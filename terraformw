@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# -------------------------------------------------------
+# Terraform Wrapper (terraformw)
+# 
+# Defines the terraform paramiters before calling it
+# -------------------------------------------------------
+
+
+# --== General ==-- #
+export TF_VAR_public_ip=$(curl ifconfig.me)
+export TF_VAR_domain=
+
+terraform "$@"

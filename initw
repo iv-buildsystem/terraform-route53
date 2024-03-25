@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+export BUCKET_NAME=
+export BUCKET_REGION=
+
+
+terraform init \
+  -backend-config="bucket=$BUCKET_NAME" \
+  -backend-config="region=$BUCKET_REGION"
