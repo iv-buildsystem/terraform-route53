@@ -10,14 +10,6 @@ resource "aws_route53_record" "primary" {
   records = ["${var.public_ip}"]
 }
 
-resource "aws_route53_record" "keycloak" {
-  zone_id = data.aws_route53_zone.primary.zone_id
-  name    = "keycloak"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["${var.domain}"]
-}
-
 resource "aws_route53_record" "jenkins" {
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = "jenkins"
