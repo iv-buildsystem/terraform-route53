@@ -26,6 +26,7 @@ resource "aws_route53_record" "mvn" {
   records = ["${var.domain}"]
 }
 
+# Domain for public docker registry (GET methods only)
 resource "aws_route53_record" "registry" {
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = "registry"
@@ -33,3 +34,13 @@ resource "aws_route53_record" "registry" {
   ttl     = "300"
   records = ["${var.domain}"]
 }
+
+# Domain for private docker registry for publishing
+resource "aws_route53_record" "registry-publish" {
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = "registry-publish"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["${var.domain}"]
+}
+
