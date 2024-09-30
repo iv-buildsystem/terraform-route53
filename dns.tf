@@ -26,6 +26,14 @@ resource "aws_route53_record" "mvn" {
   records = ["${var.domain}"]
 }
 
+resource "aws_route53_record" "sonar" {
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = "sonar"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["${var.domain}"]
+}
+
 # Domain for public docker registry (GET methods only)
 resource "aws_route53_record" "registry" {
   zone_id = data.aws_route53_zone.primary.zone_id
